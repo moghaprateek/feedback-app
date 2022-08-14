@@ -1,10 +1,11 @@
-function FeedbackStats({ feedback }) {
+import PropTypes from 'prop-types'
 
+function FeedbackStats({ feedback }) {
     let avg = feedback.reduce((acc, cur) => {
         return acc + cur.rating
     }, 0) / feedback.length
 
-    avg = avg.toFixed(1).replace(/[.,]0$/,'')
+    avg = avg.toFixed(1).replace(/[.,]0$/, '')
 
 
     return (
@@ -13,6 +14,10 @@ function FeedbackStats({ feedback }) {
             <h4>{isNaN(avg) ? 0 : avg} - Average Rating</h4>
         </div>
     )
+}
+
+FeedbackStats.propTypes = {
+    feedback: PropTypes.array,
 }
 
 export default FeedbackStats
